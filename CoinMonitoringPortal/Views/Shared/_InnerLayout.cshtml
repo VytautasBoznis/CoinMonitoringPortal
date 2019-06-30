@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>CoinMonitoringPortal - @ViewBag.Title</title>
+
+	<link rel="stylesheet" href="~/assets/libs/css/lib.min.css">
+	<link rel="stylesheet" href="~/assets/css/bootstrap.css">
+	<link rel="stylesheet" href="~/assets/css/app.css">
+	<link rel="stylesheet" href="~/assets/css/plugins.css">
+	<link rel="stylesheet" href="~/assets/css/custom-bootstrap.css">
+	<link rel="stylesheet" href="~/assets/css/main.css">
+</head>
+<body>
+	<div class="container-fluid">
+		@Html.Partial("NavBar")
+		<div id="body">
+			@RenderBody()
+		</div>
+	</div>
+</body>
+
+
+<script src="~/assets/libs/js/jquery.min.js"></script>
+<script src="~/assets/libs/js/jquery.dataTables.min.js"></script>
+<script src="~/assets/libs/js/jquery.sparkline.min.js"></script>
+<script src="~/assets/libs/js/lib.min.js"></script>
+<script src="~/assets/libs/js/chartist.min.js"></script>
+<script src="~/assets/libs/js/bootstrap-select.min.js"></script>
+<script src="~/assets/libs/js/chart.min.js"></script>
+
+
+@RenderSection("Scripts", false)
+</html>

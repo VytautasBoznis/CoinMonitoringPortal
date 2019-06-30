@@ -1,0 +1,50 @@
+﻿@{
+	ViewBag.Title = "Register";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model CoinMonitoringPortal.Portal.ViewModels.Account.RegisterViewModel
+
+<div class="row">
+	<div class="col-md-4 col-md-offset-4">
+		<div class="panel panel-default b-a-2 no-bg b-gray-dark">
+			<div class="panel-body">
+				<h2 class="text-center f-w-300 m-b-0">Register</h2>
+				@using (@Html.BeginForm("Register", "Account", FormMethod.Post, new { @id = "register_form" }))
+				{
+					@Html.AntiForgeryToken()
+
+					<div class="form-group">
+						<span class="text_base_class">Username: </span>
+						@Html.TextBoxFor(m => m.UserName, new { @class = "form-control", @placeholder = "Username" })
+					</div>
+					<div class="form-group">
+						<span class="text_base_class">Password: </span>
+						@Html.PasswordFor(m => m.Password, new { @class = "form-control", @placeholder = "Password" })
+					</div>
+					<div class="form-group">
+						<span class="text_base_class">Password repeat: </span>
+						@Html.PasswordFor(m => m.PasswordRepeat, new { @class = "form-control", @placeholder = "Repeat password" })
+					</div>
+					<div class="form-group">
+						<span class="text_base_class">Email: </span>
+						@Html.TextBoxFor(m => m.Email, new { @class = "form-control", @placeholder = "Email" })
+					</div>
+
+					if (!string.IsNullOrWhiteSpace(Model.ErrorMessage))
+					{
+						<div>@Model.ErrorMessage</div>
+					}
+					<button type="submit" title="Submit" class="btn btn-block m-b-2 btn-primary">Register</button>
+					<div>
+						<a href="@Url.RouteUrl("Login")">Login</a>
+					</div>
+
+				}
+
+			</div>
+		</div>
+	</div>
+</div>
+
+

@@ -1,0 +1,49 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2046
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoinMonitoringPortal.Portal", "CoinMonitoringPortal\CoinMonitoringPortal.Portal.csproj", "{A0D564E1-0B3A-4A20-9E70-3FEAA424E612}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoinMonitoringPortal.Interfaces", "CoinMonitoringPortal.Interfaces\CoinMonitoringPortal.Interfaces.csproj", "{1810EB9C-ABD9-408D-81BE-0BACECE883A9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoinMonitoringPortal.Business", "CoinMonitoringPortal.Business\CoinMonitoringPortal.Business.csproj", "{6B2AA33E-5369-41AB-82ED-1A156B9265FC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoinMonitoringPortal.Data", "CoinMonitoringPortal.Data\CoinMonitoringPortal.Data.csproj", "{8C1447D8-4856-496C-94C0-E492C4B56223}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoinMonitoringPortal.Client", "CoinMonitoringPortal.Client\CoinMonitoringPortal.Client.csproj", "{DEA1F1DA-EB8A-401C-B73C-F0EFA4B49093}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A0D564E1-0B3A-4A20-9E70-3FEAA424E612}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A0D564E1-0B3A-4A20-9E70-3FEAA424E612}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A0D564E1-0B3A-4A20-9E70-3FEAA424E612}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A0D564E1-0B3A-4A20-9E70-3FEAA424E612}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1810EB9C-ABD9-408D-81BE-0BACECE883A9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1810EB9C-ABD9-408D-81BE-0BACECE883A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1810EB9C-ABD9-408D-81BE-0BACECE883A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1810EB9C-ABD9-408D-81BE-0BACECE883A9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6B2AA33E-5369-41AB-82ED-1A156B9265FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6B2AA33E-5369-41AB-82ED-1A156B9265FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6B2AA33E-5369-41AB-82ED-1A156B9265FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6B2AA33E-5369-41AB-82ED-1A156B9265FC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8C1447D8-4856-496C-94C0-E492C4B56223}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8C1447D8-4856-496C-94C0-E492C4B56223}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8C1447D8-4856-496C-94C0-E492C4B56223}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8C1447D8-4856-496C-94C0-E492C4B56223}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DEA1F1DA-EB8A-401C-B73C-F0EFA4B49093}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DEA1F1DA-EB8A-401C-B73C-F0EFA4B49093}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DEA1F1DA-EB8A-401C-B73C-F0EFA4B49093}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DEA1F1DA-EB8A-401C-B73C-F0EFA4B49093}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B587283A-5DA5-4270-AE59-3DF186152776}
+	EndGlobalSection
+EndGlobal

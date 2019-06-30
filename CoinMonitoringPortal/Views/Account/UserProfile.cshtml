@@ -1,0 +1,119 @@
+﻿@model CoinMonitoringPortal.Portal.ViewModels.Account.UserProfileViewModel
+@{
+    ViewBag.Title = "UserProfile";
+    Layout = "~/Views/Shared/_InnerLayout.cshtml";
+}
+
+@section Scripts {
+	<script src="~/assets/js/app-user-profile.js"></script>
+}
+
+<div class="col-lg-12">
+	<h4>Update user</h4>
+	@using (@Html.BeginForm("UserUserProfile", "Account", FormMethod.Post, new { @id = "login_form", @class = "form-horizontal" }))
+	{
+		<div class="form-group">
+			<label for="inputEmail3" class="col-sm-3 control-label">New email</label>
+			<div class="col-sm-9">
+				@Html.TextBoxFor(m => m.UpdateUser.Email, new {@type= "email", @class = "form-control", @placeholder = "Enter a new email" })
+			</div>
+		</div>
+		<div class="form-group">
+			<div class="col-sm-3">
+			</div>
+			<div class="col-sm-9">
+				<button type="submit" title="Submit" class="btn btn-block m-b-2 btn-primary">Submit</button>
+			</div>
+		</div>
+	}
+	<h4>Change password</h4>
+	<form class="form-horizontal">
+		<div class="form-group">
+			<label for="inputEmail3" class="col-sm-3 control-label">New password</label>
+			<div class="col-sm-9">
+				<input type="password" class="form-control" id="inputEmail3">
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="inputEmail3" class="col-sm-3 control-label">New password repeat</label>
+			<div class="col-sm-9">
+				<input type="password" class="form-control">
+			</div>
+		</div>
+		<div class="form-group">
+			<div class="col-sm-3">
+			</div>
+			<div class="col-sm-9">
+				<button class="btn btn-primary btn-lg active">Submit</button>
+			</div>
+		</div>
+	</form>
+	
+	<div style="padding-bottom: 15px;">
+		<button id="add-key" class="btn btn-primary btn-lg active">Add</button>
+	</div>
+	<table id="scheduled_trades" class="table dataTable no-footer table-striped table-bordered">
+		<thead>
+			<tr>
+				<td>Exchange name</td>
+				<td>Key</td>
+				<td>Secret</td>
+				<td>Action</td>
+			</tr>
+		</thead>
+		<tbody>
+		@foreach (var key in Model.AuthKeys.AuthKeys)
+		{
+			<tr>
+				<td>@(key.ExchangeType == 1 ? "Cex.io" : "Poloniex")</td>
+				<td>@key.KeyValue</td>
+				<td>*</td>
+				<td><button data-key-nr="@key.KeyNr" class="deleteKeys btn btn-primary btn-lg active">Delete</button></td>
+			</tr>
+		}
+		</tbody>
+	</table>
+</div>
+
+<div id="add-key-form" class="modal" tabindex="-1" role="dialog">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+				<h4 class="modal-title">Add key pair</h4> </div>
+			<div class="modal-body">
+				<form class="form-horizontal">
+					<div class="form-group">
+						<label for="inputEmail3" class="col-sm-3 control-label">Exchange</label>
+						<div class="col-sm-9">
+							<select id="exchangeKey" class="form-control">
+								<option value="1">Cex</option>
+								<option value="2">Poloniex</option>
+							</select>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-3"></div>
+						<div id="cex-info" style="color: red" class="col-sm-9">Cex key should follow the pattern Username,Key</div>
+					</div>
+					<div class="form-group">
+						<label for="inputEmail3" class="col-sm-3 control-label">Key</label>
+						<div class="col-sm-9">
+							<input id="keyValue" type="text" class="form-control"/>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="inputEmail3" class="col-sm-3 control-label">Secret</label>
+						<div class="col-sm-9">
+							<input id="secretValue" type="text" class="form-control"/>
+						</div>
+					</div>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button id="save-key" type="button" class="btn btn-primary">Add</button>
+				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			</div>
+		</div>
+	</div>
+</div>

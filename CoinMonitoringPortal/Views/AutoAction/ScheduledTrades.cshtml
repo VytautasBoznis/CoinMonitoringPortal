@@ -1,0 +1,85 @@
+﻿@{
+	ViewBag.Title = "Scheduled Trades";
+	Layout = "~/Views/Shared/_InnerLayout.cshtml";
+}
+
+@section Scripts {
+	<script src="~/assets/js/app-scheduled-trades.js"></script>
+}
+
+@using System.Globalization
+@using CoinMonitoringPortal.Data.Data.AutoAction
+@using CoinMonitoringPortal.Data.Data.Trade
+@using CoinMonitoringPortal.Data.Enums
+@model CoinMonitoringPortal.Portal.ViewModels.AutoAction.ScheduledTradesViewModel
+
+<div style="float: right; padding-bottom: 15px;">
+	<a href="@Url.RouteUrl("CreateNewTrade")"><span class="btn btn-primary btn-lg active">Create new</span></a>
+</div>
+
+@foreach (ScheduledTrade trade in Model.ScheduledTrades)
+{
+	<div style="padding-top: 15px;">
+		<table id="scheduled_trades" class="table dataTable no-footer table-striped table-bordered">
+			<thead>
+				<tr>
+					<td>Trade nr</td>
+					<td>Creation date</td>
+					<td>Trade action</td>
+					<td>Trade status</td>
+					<td>Completion date</td>
+					<td>Exchange name</td>
+					<td>Currency pair name</td>
+					<td>Action</td>
+				</tr>
+			</thead>
+			<tbody>
+
+				<tr>
+					<td>@trade.TradeNr</td>
+					<td>@trade.CreationDate.ToString("yyyy-MM-dd HH:mm:ss")</td>
+					<td>@(trade.TradeAction == 1 ? "Buy" : "Sell")</td>
+					<td>@(trade.TradeStatus == 1 ? "Pending" : trade.TradeStatus == 2 ? "Valid" : trade.TradeStatus == 3 ? "Failed" : "Completed") </td>
+					<td>@(trade.CompletionTime.HasValue ? trade.CompletionTime.Value.ToString("yyyy-MM-dd HH:mm:ss") : "-")</td>
+					<td>@trade.ExchangePair.ExchangeType.ToString()</td>
+					<td>@trade.ExchangePair.Symbol1.ToString() / @trade.ExchangePair.Symbol2.ToString()</td>
+					<td>
+						@if (trade.TradeStatus != (int)TradeStatusEnum.Completed)
+						{
+							<button class="btn btn-outline btn-primary deleteButton" data-trade-nr="@trade.TradeNr">Delete</button>
+						}
+						@if (trade.TradeStatus == (int)TradeStatusEnum.Failed)
+						{
+							<button class="btn btn-outline btn-primary resetButton" data-trade-nr="@trade.TradeNr">Reset</button>
+						}
+					</td>
+					<div id="criteria">
+						<table class="table dataTable no-footer table-striped table-bordered">
+							<thead>
+								<tr>
+									<td>Criteria nr</td>
+									<td>Economy index value</td>
+									<td>Criteria value type</td>
+									<td>Value</td>
+									<td>Weight</td>
+								</tr>
+							</thead>
+							<tbody>
+								@foreach (TradeCriteria criteria in trade.TradeCriteria)
+								{
+									<tr>
+										<td>@criteria.CriteriaNr</td>
+										<td>@criteria.EcoIndexType.ToString()</td>
+										<td>@criteria.CriteriaValueType</td>
+										<td>@criteria.Value.ToString(CultureInfo.InvariantCulture)</td>
+										<td>@criteria.Weight.ToString(CultureInfo.InvariantCulture)</td>
+									</tr>
+								}
+							</tbody>
+						</table>
+					</div>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+}

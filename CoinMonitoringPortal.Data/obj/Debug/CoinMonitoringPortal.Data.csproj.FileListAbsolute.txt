@@ -1,0 +1,6 @@
+C:\github\CoinMonitoringPortal\CoinMonitoringPortal.Data\bin\Debug\CoinMonitoringPortal.Data.dll
+C:\github\CoinMonitoringPortal\CoinMonitoringPortal.Data\bin\Debug\CoinMonitoringPortal.Data.pdb
+C:\github\CoinMonitoringPortal\CoinMonitoringPortal.Data\obj\Debug\CoinMonitoringPortal.Data.csproj.CoreCompileInputs.cache
+C:\github\CoinMonitoringPortal\CoinMonitoringPortal.Data\obj\Debug\CoinMonitoringPortal.Data.dll
+C:\github\CoinMonitoringPortal\CoinMonitoringPortal.Data\obj\Debug\CoinMonitoringPortal.Data.pdb
+C:\github\CoinMonitoringPortal\CoinMonitoringPortal.Data\obj\Debug\CoinMonitoringPortal.Data.csprojAssemblyReference.cache

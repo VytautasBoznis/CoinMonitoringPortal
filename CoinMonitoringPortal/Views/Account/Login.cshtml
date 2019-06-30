@@ -1,0 +1,38 @@
+﻿@{
+	ViewBag.Title = "Login";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model CoinMonitoringPortal.Portal.ViewModels.Account.LoginViewModel
+<div class="row">
+	<div class="col-md-4 col-md-offset-4">
+		<div class="panel panel-default b-a-2 no-bg b-gray-dark">
+			<div class="panel-body">
+				<h2 class="text-center f-w-300 m-b-0"> Login</h2>
+				@using (@Html.BeginForm("Login", "Account", FormMethod.Post, new { @id = "login_form", @class = "m-t-3" }))
+				{
+					@Html.AntiForgeryToken()
+
+					<div class="form-group">
+						<span class="text_base_class">Username: </span>
+						@Html.TextBoxFor(m => m.UserName, new { @class = "form-control", @placeholder = "Enter a Username" })
+					</div>
+					<div class="form-group">
+						<span class="text_base_class">Password: </span>
+						@Html.PasswordFor(m => m.Password, new { @class = "form-control", @placeholder = "Password" })
+					</div>
+					if (!string.IsNullOrWhiteSpace(Model.ErrorMessage))
+					{
+						<div>@Model.ErrorMessage</div>
+					}
+					<button type="submit" title="Submit" class="btn btn-block m-b-2 btn-primary">Submit</button>
+					<div>
+						<a type="submit" href="@Url.RouteUrl("Register")">Register</a>
+					</div>
+				}
+			</div>
+		</div>
+	</div>
+</div>
+
+

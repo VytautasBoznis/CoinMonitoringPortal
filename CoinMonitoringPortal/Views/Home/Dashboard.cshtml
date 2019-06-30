@@ -1,0 +1,113 @@
+﻿@model CoinMonitoringPortal.Portal.ViewModels.Home.DashboardViewModel
+
+@{
+	ViewBag.Title = "Dashboard";
+	Layout = "~/Views/Shared/_InnerLayout.cshtml";
+}
+
+
+@section Scripts {
+	<script src="~/assets/js/app-dashboard.js"></script>
+}
+
+
+<div class="col-lg-12">
+	<h2>Dashboard</h2>
+</div>
+
+<div class="col-lg-12">
+	<div class="col-lg-9">
+		<div class="panel panel-default b-a-2 b-gray-dark no-bg">
+			<div class="panel-heading">
+				<div class="row">
+					<div class="form-group">
+						<label for="exchange" class="col-sm-2 control-label">Exchange</label>
+						<div class="col-sm-3">
+							<select id="exchangeKey" class="form-control">
+								<option value="1">Cex</option>
+								<option value="2">Poloniex</option>
+							</select>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="form-group">
+						<label for="coin" class="col-sm-2 control-label">Coin</label>
+						<div class="col-sm-3">
+							<select id="coin" class="form-control">
+								<option value="1">BTC/ETH</option>
+								<option value="2">BTC/USD</option>
+								<option value="3">BTC/EUR</option>
+								<option value="4">ETH/USD</option>
+								<option value="5">ETH/EUR</option>
+							</select>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="panel-body">
+				<div class="chart-container" style="position: relative; height:600px; width:600px">
+					<canvas id="chart" width="400" height="400"></canvas>
+				</div>
+			</div>
+			<div class="panel-footer">
+				<div class="row">
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+						<div class="btn-group m-b-1" data-toggle="buttons">
+							<label class="btn btn-info btn-outline">
+								<input id="EmaChecked" type="checkbox" >EMA
+							</label>
+						</div>
+						<div class="btn-group m-b-1" data-toggle="buttons">
+							<label class="btn btn-info btn-outline">
+								<input id="RsiChecked" type="checkbox" >RSI
+							</label>
+						</div>
+						<div class="btn-group m-b-1" data-toggle="buttons">
+							<label class="btn btn-info btn-outline">
+								<input id="FiChecked" type="checkbox" >ForceIndex
+							</label>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-lg-3">
+		<div class="col-lg-12">
+			<div class="btn-group m-b-1">
+				<a href="@Url.RouteUrl("CreateNewTrade")"><span class="btn btn-primary btn-lg active">Create new</span></a>
+			</div>
+			<div class="btn-group m-b-1">
+				<a href="@Url.RouteUrl("SynchronizeData")" class="btn btn-primary btn-lg active" role="button">Synchronize</a>
+			</div>
+		</div>
+		<div class="col-lg-12">
+			@foreach (var data in Model.PortfolioDatas)
+			{
+				<li class="portfolioData list-group-item no-bg">
+					<div class="media">
+						<div class="media-left">
+							<span class="fa-stack fa-lg">
+								<i class="fa fa-circle-thin fa-stack-2x text-primary"></i>
+								<i class="fa fa-info fa-stack-1x fa-fw text-primary"></i>
+							</span>
+						</div>
+						<div class="media-body">
+							<h6 class="m-t-0">
+								@foreach (var currency in data.CurrencyDatas)
+								{
+									<span>@currency.Symbol: @currency.Value</span>
+								}
+							</h6>
+							<p class="text-nowrap small m-b-0">
+								<span style="color: #e0e0e3">@(data.ExchangeType == 1 ? "Cex.io" : "Poloniex")</span>
+							</p>
+						</div>
+					</div>
+				</li>
+			}
+		</div>
+	</div>
+</div>
+
